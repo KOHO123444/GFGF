@@ -1,0 +1,18 @@
+workflows:
+  ios-app:
+    name: FishWise iOS Build
+    environment:
+      xcode: latest
+    scripts:
+      - name: Install dependencies
+        script: |
+          echo "No dependencies to install for this basic SwiftUI app"
+      - name: Build .app
+        script: |
+          xcodebuild -workspace FishWiseApp.xcworkspace -scheme FishWiseApp -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 14' build
+    artifacts:
+      - build/ios/iphonesimulator/*.app
+    publishing:
+      email:
+        recipients:
+          - your-email@example.com
